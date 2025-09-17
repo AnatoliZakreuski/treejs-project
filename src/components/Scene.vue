@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { createDoor } from './objects/createDoor';
-import { createWall } from './objects/createMirror';
 import { Reflector } from 'three/examples/jsm/objects/Reflector.js';
 
 // --- Пропсы для компонента ---
@@ -24,8 +23,6 @@ let renderer: THREE.WebGLRenderer;
 let controls: OrbitControls;
 let door: THREE.Object3D;
 let directionalLight: THREE.DirectionalLight;
-
-let clock = new THREE.Clock(); // для анимации света
 
 // --- Инициализация сцены ---
 onMounted(() => {
@@ -145,7 +142,7 @@ function initObjects() {
   );
   
 
-
+  //Зеркало
   const geometry = new THREE.PlaneGeometry(10, 10); // размер зеркала
   const mirror = new Reflector(geometry, {
     clipBias: 0.003,
